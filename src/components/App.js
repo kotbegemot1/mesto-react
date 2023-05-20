@@ -30,7 +30,7 @@ function App() {
   const [isLoading, setIsLoading] = React.useState(false)
 
 
-  // клик по картинке
+  // клик по картинке 
   function handleCardClick(card) {
     setSelectedCard(card)
     setIsOpenImage(true)
