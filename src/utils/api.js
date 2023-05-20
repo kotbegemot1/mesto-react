@@ -34,6 +34,7 @@ class Api {
   };
 
   editUserInfo({name, about}) {
+    console.log(name, about);
     return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
       headers: {
@@ -91,6 +92,26 @@ class Api {
       }
     })
     .then(res => this._checkResponse(res))
+  }
+
+  changeLikeCardStatus(cardId, isLiked) {
+    if (isLiked) {
+      return fetch(`${this._url}/cards/${cardId}/likes`, {
+        method: 'PUT',
+        headers: {
+          authorization: this._token
+        }
+      })
+      .then(res => this._checkResponse(res))
+    } else {
+      return fetch(`${this._url}/cards/${cardId}/likes`, {
+        method: 'DELETE',
+        headers: {
+          authorization: this._token
+        }
+      })
+      .then(res => this._checkResponse(res))
+    }
   }
 
   updateUserAvatar(link) {
